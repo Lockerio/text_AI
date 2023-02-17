@@ -36,7 +36,7 @@ class DigitNeuralNetwork:
         return repr(self.model.summary())
 
     def train_network(self):
-        self.model.fit(self.x_train, self.y_train_cat, batch_size=32, epochs=5, validation_split=0.2)
+        self.model.fit(self.x_train, self.y_train_cat, batch_size=32, epochs=5, validation_split=0.3)
 
     def check_network(self):
         self.model.evaluate(self.x_test, self.y_test_cat)

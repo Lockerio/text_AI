@@ -11,12 +11,12 @@ def set_network_model(network_name):
         return user_model
 
     except OSError:
-        print(f"Файл {model_path} не найден! Возможна ошибка в написании нейросети")
+        print(f"Файл {model_path} не найден! Возможна ошибка в написании названия нейросети")
 
 
 if __name__ == '__main__': 
     model = set_network_model("digit_recognition")
-    img = WorkerWithImages().convert_28_28_image_to_pixels_array("resources/adin.png")
+    img = WorkerWithImages().convert_28_28_image_to_pixels_array("resources/s.png")
 
     x = np.expand_dims(img, axis=0)
     res = model.predict(x)
