@@ -2,6 +2,7 @@ import numpy as np
 from keras.datasets import mnist         # Библиотека базы выборок Mnist
 from tensorflow import keras
 from keras.layers import Dense, Flatten, Conv2D, MaxPooling2D
+from utils.work_with_images import WorkerWithImages
 
 
 class DigitNeuralNetwork:

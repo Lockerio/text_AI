@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NeuralNetwork</title>
+    <link rel="stylesheet" href="..\..\static\css\main_page.css">
+</head>
+<body>
+        <main>
+        <div id="draw">
+            <canvas width="560" height="560" style="display: block; border: 2px solid coral; margin: 0; padding: 0;" id="canvas"></canvas>
+            <form action="/results" method="post" enctype="multipart/form-data">
+                <p>Загрузите свое изображение</p>
+                <input id="drawn_img" type="text" name="picture" style="display: none;">
+                <input id="drawn_img_submit" type="submit" value="Отправить">
+            </form>
+        </div>
+        <div id="own_file">
+            <form action="/results" method="post" enctype="multipart/form-data">
+                <p>Загрузите свое изображение</p>
+                <input id="loaded_img" type="file" name="picture">
+                <input id="loaded_img_submit" type="submit" value="Отправить">
+            </form>
+        </div>
+    </main>
+    <script>
+        var
+            canv = document.getElementById('canvas'),
+            ctx = canv.getContext('2d'),
+            btnSend = document.querySelector("#drawn_img_submit"),
+            isMouseDown = false;
+
+        window.addEventListener("load",function(){
+            ctx.fillStyle = 'white';
+            ctx.rect(0, 0, canv.width, canv.height);
+            ctx.fill();
+            ctx.fillStyle = 'black';
+            ctx.beginPath();
+        });
+
+        canv.addEventListener('mousedown', function(e) {
+            isMouseDown = true;
+        });
+
+        canv.addEventListener('mouseup', function(e) {
+            isMouseDown = false;
+            ctx.beginPath();
+        });
+
+        ctx.lineWidth = 10 * 2;
+        canv.addEventListener('mousemove', function(e) {
+            if (isMouseDown)
+            {
+                ctx.lineTo(e.clientX, e.clientY);
+                ctx.stroke();
+
+                ctx.beginPath();
+                ctx.arc(e.clientX, e.clientY, 10, 0, Math.PI * 2);
+                ctx.fill();
+
+                ctx.beginPath();
+                ctx.moveTo(e.clientX, e.clientY);
+            }
+        });
+
+        btnSend.addEventListener("click", function() {
+            img = canvas.toDataURL('image/png');
+            console.log(img);
+            document.getElementById('drawn_img').value = img;
+        });
+    </script>
+</body>
+</html>
