@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>NeuralNetwork</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main_page.css') }}">
+</head>
+<body>
+    <main>
+        <div id="draw">
+            <canvas width="560" height="560" id="canvas"></canvas>
+            <form action="/results" method="post" enctype="multipart/form-data">
+                <p>Загрузите свое изображение</p>
+                <input id="drawn_img" type="text" name="picture" style="display: none;">
+                <input id="clear_btn" type="button"  value="Очистить"></inputid>
+                <input id="drawn_img_submit" type="submit" value="Отправить">
+            </form>
+        </div>
+        <div id="own_file">
+            <form action="/results" method="post" enctype="multipart/form-data">
+                <p>Загрузите свое изображение</p>
+                <input id="loaded_img" type="file" name="picture">
+                <input id="loaded_img_submit" type="submit" value="Отправить">
+            </form>
+        </div>
+    </main>
+    <script src="{{ url_for('static', filename='scripts/drawing.js') }}"></script>
+</body>
+</html>
