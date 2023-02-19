@@ -34,7 +34,6 @@ class WorkerWithImages:
             ]
             for row in raw_pixels
         ])
-        print(pixels)
         return pixels
 
     @staticmethod

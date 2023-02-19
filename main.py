@@ -1,5 +1,5 @@
 from flask import Flask
-from web.main_page.views import main_page_blueprint
+from main_page.views import main_page_blueprint
 
 
 app = Flask(__name__)
