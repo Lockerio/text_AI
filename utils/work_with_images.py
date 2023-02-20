@@ -7,12 +7,23 @@ from io import BytesIO
 class WorkerWithImages:
     @staticmethod
     def open_image(raw_img):
-        if type(raw_img) == str:
+        if type(raw_img) is str:
             img = raw_img.split(',')[1]
             img = Image.open(BytesIO(base64.b64decode(img)))
         else:
             img = Image.open(raw_img)
         return img
+
+    def convert_image_to_base(self, img):
+        if type(img) is not str:
+            img = self.open_image(img)
+            buffered = BytesIO()
+            img.save(buffered, format=img.format)
+            image_data = base64.b64encode(buffered.getvalue()).decode("utf-8")
+            image_data = "data:image/;base64data:" + image_data
+        else:
+            image_data = "data:image/;base64" + img
+        return image_data
 
     @staticmethod
     def assert_image(img):

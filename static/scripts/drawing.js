@@ -45,7 +45,6 @@ canv.addEventListener('mousemove', function(e) {
 
 btnSend.addEventListener("click", function() {
     img = canvas.toDataURL('image/png');
-    console.log(img);
     document.getElementById('drawn_img').value = img;
 });
 
