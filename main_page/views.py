@@ -26,8 +26,9 @@ def return_results_page():
         raw_pixels = images_worker.convert_28_28_image_to_pixels_array(raw_img)
         pixels = images_worker.change_black_to_white(raw_pixels)
 
-    digits, result, answer = recognize_user_input("digit_recognition", pixels)
-    return render_template('results.html', digits=digits, result=result, answer=answer)
+    img = images_worker.convert_image_to_base(raw_img)
+    result, answer = recognize_user_input("digit_recognition", pixels)
+    return render_template('results.html', img=img, result=result, answer=answer)
 
 
 if __name__ == '__main__':
