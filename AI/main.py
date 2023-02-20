@@ -1,5 +1,6 @@
-from tensorflow import keras
 import numpy as np
+from tensorflow import keras
+from AI.dao.output_dao import OutputDAO
 
 
 def recognize_user_input(network_name, pixels):
@@ -16,10 +17,10 @@ def recognize_user_input(network_name, pixels):
 
     else:
         x = np.expand_dims(pixels, axis=0)
-        res = model.predict(x)
-        answer = np.argmax(res)
-
-        return res, answer
+        raw_res = model.predict(x)
+        answer = np.argmax(raw_res)
+        digits, res = OutputDAO().get_processed_digit_output(raw_res)
+        return digits, res, answer
 
 
 if __name__ == '__main__':
