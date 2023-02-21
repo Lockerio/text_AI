@@ -4,7 +4,7 @@ var
     btnSend = document.querySelector("#drawn_img_submit"),
     btnClear = document.querySelector("#clear_btn"),
     isMouseDown = false,
-    penWidth = 46;
+    penWidth = 10;
 
 function clearCanv(){
     ctx.fillStyle = 'white';
