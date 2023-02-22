@@ -1,11 +1,10 @@
 import numpy as np
-from keras.datasets import mnist         # Библиотека базы выборок Mnist
 from tensorflow import keras
 from keras.layers import Dense, Flatten, Conv2D, MaxPooling2D
 from keras.preprocessing.image import ImageDataGenerator
 
 
-class DigitNeuralNetwork:
+class DigitsLettersNeuralNetwork:
     def __init__(self):
         self.size = 28, 28
         self.batch_size = 5
@@ -66,7 +65,7 @@ class DigitNeuralNetwork:
 
 
 if __name__ == '__main__':
-    nn = DigitNeuralNetwork()
+    nn = DigitsLettersNeuralNetwork()
     nn.train_network()
     nn.check_network()
     nn.save_network_model("ru_car_numbers_recognition_by_symbol_model")

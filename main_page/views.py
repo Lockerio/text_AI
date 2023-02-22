@@ -27,7 +27,7 @@ def return_results_page():
         pixels = images_worker.change_black_to_white(raw_pixels)
 
     img = images_worker.convert_image_to_base(raw_img)
-    result, answer = recognize_user_input("digit_recognition", pixels)
+    result, answer = recognize_user_input("ru_car_numbers_recognition_by_symbol", pixels)
     return render_template('results.html', img=img, result=result, answer=answer)
 
 
