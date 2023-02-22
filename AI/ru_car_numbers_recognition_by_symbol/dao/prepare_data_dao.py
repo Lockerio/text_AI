@@ -3,7 +3,7 @@ import numpy as np
 from PIL import Image
 
 
-class PrepareDAO:
+class PrepareDataDAO:
     def prepare_cyrillic(self, directory):
         for root, dirs, files in os.walk(directory):
             for file in files:
@@ -12,7 +12,7 @@ class PrepareDAO:
                 self.make_background(filepath)
                 self.resize_img_to_28_28(filepath)
                 self.change_black_to_white(filepath)
-            print(f"Директория '{root}' обработана.")
+            print(f"Directory '{root}' processed.")
 
     @staticmethod
     def make_background(filepath):
@@ -51,4 +51,4 @@ class PrepareDAO:
 
 
 if __name__ == '__main__':
-    PrepareDAO().prepare_cyrillic("../data/cyrillic/I")
+    PrepareDataDAO().prepare_cyrillic("../data/cyrillic/I")
