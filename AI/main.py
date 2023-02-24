@@ -4,6 +4,12 @@ from AI.dao.output_dao import OutputDAO
 
 
 def recognize_user_input(network_name, pixels):
+    """
+    Predict answer to user input.
+    :param network_name: Choosing a neural network.
+    :param pixels: Handled user image.
+    :return: Network prediction.
+    """
     model_path = f"AI/{network_name}/{network_name}_model"
 
     if __name__ == '__main__':
@@ -19,7 +25,7 @@ def recognize_user_input(network_name, pixels):
         x = np.expand_dims(pixels, axis=0)
         raw_res = model.predict(x)
         answer = np.argmax(raw_res)
-        res, answer = OutputDAO().get_processed_digits_letters_output(raw_res, answer)
+        res, answer = OutputDAO().get_processed_symbols_output(raw_res, answer)
         return res, answer
 
 

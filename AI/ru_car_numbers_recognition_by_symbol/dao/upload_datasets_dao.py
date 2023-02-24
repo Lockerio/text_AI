@@ -3,9 +3,12 @@ from PIL import Image
 
 
 class UploadDatasetsDAO:
+    """
+    Uploading datasets by prepared data.
+    """
     def __init__(self):
         self.max_amount_training_files = 380
-        self.max_amount_testing_files = 500  # For digits. Too much files in source folder.
+        self.max_amount_testing_files = 500  # For digits. Too much files for my network in source folder.
 
     def upload_cyrillic(self, directory):
         for root, dirs, files in os.walk(directory):
@@ -21,7 +24,6 @@ class UploadDatasetsDAO:
                 else:
                     path = f"../datasets/testing/{self.get_symbol(root)}/{file}"
                     img.save(path)
-
             print(f"Directory '{root}' processed.")
 
     def upload_digits(self, directory):

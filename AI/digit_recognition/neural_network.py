@@ -1,14 +1,20 @@
 import numpy as np
-from keras.datasets import mnist         # Библиотека базы выборок Mnist
+from keras.datasets import mnist
 from tensorflow import keras
 from keras.layers import Dense, Flatten, Conv2D, MaxPooling2D
 
 
 class DigitNeuralNetwork:
+    """
+    Create, train and test digit neural network.
+    """
     def __init__(self):
+        """
+        Create network model. Use mnist db as dataset.
+        """
         (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
-        # стандартизация входных данных
+        # Standardization of input data.
         x_train = x_train / 255
         x_test = x_test / 255
 
@@ -43,7 +49,7 @@ class DigitNeuralNetwork:
 
     def save_network_model(self, model_path):
         self.model.save(model_path)
-        print("Модель сохранена")
+        print("Model saved!")
 
 
 if __name__ == '__main__':

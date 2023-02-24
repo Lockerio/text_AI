@@ -5,7 +5,13 @@ from keras.preprocessing.image import ImageDataGenerator
 
 
 class DigitsLettersNeuralNetwork:
+    """
+    Create, train and test neural network for recognition russian car numbers.
+    """
     def __init__(self):
+        """
+        Create network model.
+        """
         self.size = 28, 28
         self.batch_size = 5
         self.epochs = 5
