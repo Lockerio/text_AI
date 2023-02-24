@@ -1,6 +1,49 @@
-#canvas {
-    display: block;
-    border: 2px solid coral; 
-    margin: 0; 
+@import url('https://fonts.googleapis.com/css2?family=Exo+2:wght@100;300;500;900&display=swap');
+
+* {
+    margin: 0;
     padding: 0;
+    font-family: 'Exo 2', sans-serif;
+}
+
+:root {
+    --_color: #3C4A4D;
+    --_color: #91CBD5;
+    --background_color: #ebfdff;
+    --border_color: #154A52;
+    --_color: #799599;
+}
+
+/* Positioning */
+#canvas {
+    margin: 15px;
+    border: 2px;
+    display: block;
+    float: left;
+}
+
+#forms {
+    margin: 15px;   
+    float: left;
+}
+
+#draw_form {
+    float: none;
+}
+
+#own_file {
+    float: none;
+}
+
+#own_files {
+    float: none;
+}
+
+/* Coloring */
+body {
+    background: var(--background_color);
+}
+
+#canvas {
+    border: solid var(--border_color); 
 }

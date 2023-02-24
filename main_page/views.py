@@ -26,8 +26,27 @@ def return_results_page():
         raw_pixels = images_worker.convert_28_28_image_to_pixels_array(raw_img)
         pixels = images_worker.change_black_to_white(raw_pixels)
 
-    digits, result, answer = recognize_user_input("digit_recognition", pixels)
-    return render_template('results.html', digits=digits, result=result, answer=answer)
+    img = images_worker.convert_image_to_base(raw_img)
+    result, answer = recognize_user_input("ru_car_numbers_recognition_by_symbol", pixels)
+    return render_template('results.html', img=img, result=result, answer=answer)
+
+
+@main_page_blueprint.route('/car_results', methods=['POST'])
+def return_car_results_page():
+    files = request.files.getlist('files[]')
+    images_worker = WorkerWithImages()
+    results = []
+    answers = []
+
+    for file in files:
+        pixels = images_worker.convert_28_28_image_to_pixels_array(file)
+        pixels = images_worker.change_black_to_white(pixels)
+        # img = images_worker.convert_image_to_base(file)
+        result, answer = recognize_user_input("ru_car_numbers_recognition_by_symbol", pixels)
+        results.append(result)
+        answers.append(answer)
+
+    return render_template('car_results.html', results=results, answers=answers)
 
 
 if __name__ == '__main__':

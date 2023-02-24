@@ -19,8 +19,8 @@ def recognize_user_input(network_name, pixels):
         x = np.expand_dims(pixels, axis=0)
         raw_res = model.predict(x)
         answer = np.argmax(raw_res)
-        digits, res = OutputDAO().get_processed_digit_output(raw_res)
-        return digits, res, answer
+        res, answer = OutputDAO().get_processed_digits_letters_output(raw_res, answer)
+        return res, answer
 
 
 if __name__ == '__main__':

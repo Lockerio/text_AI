@@ -7,22 +7,37 @@
 </head>
 <body>
     <main>
-        <div id="draw">
-            <canvas width="560" height="560" id="canvas"></canvas>
-            <form action="/results" method="post" enctype="multipart/form-data">
-                <p>Загрузите свое изображение</p>
-                <input id="drawn_img" type="text" name="picture" style="display: none;">
-                <input id="clear_btn" type="button"  value="Очистить"></inputid>
-                <input id="drawn_img_submit" type="submit" value="Отправить">
-            </form>
-        </div>
-        <div id="own_file">
-            <form action="/results" method="post" enctype="multipart/form-data">
-                <p>Загрузите свое изображение</p>
-                <input id="loaded_img" type="file" name="picture">
-                <input id="loaded_img_submit" type="submit" value="Отправить">
-            </form>
-        </div>
+        <canvas width="560" height="560" id="canvas"></canvas>
+        <ul id="forms">
+            <ol>
+                <form id="draw_form" action="/results" method="post" enctype="multipart/form-data">
+                    <p>Нарисованное изображение:</p>
+                    <input id="drawn_img" type="text" name="picture" style="display: none;">
+                    <input id="clear_btn" type="button"  value="Очистить"></inputid>
+                    <input id="drawn_img_submit" type="submit" value="Отправить">
+                </div>
+            </ol>
+            <ol>
+                <div id="own_file">
+                    <form action="/results" method="post" enctype="multipart/form-data">
+                        <p>Загрузите свое изображение:</p>
+                        <input id="loaded_img" type="file" name="picture">
+                        <input id="loaded_img_submit" type="submit" value="Отправить">
+                    </form>
+                </div>
+            </ol>
+            <ol>
+                <div id="own_files">
+                    <form action="/car_results" method="post" enctype="multipart/form-data">
+                        <p>Загрузите несколько изображений (символы автомобильного номера):</p>
+                        <dl>
+                            <input id="loaded_imgs" type="file" name="files[]" multiple="true" autocomplete="off" required>
+                        </dl>
+                        <input id="loaded_imgs_submit" type="submit" value="Отправить">
+                    </form>
+                </div>
+            </ol>
+        </ul>
     </main>
     <script src="{{ url_for('static', filename='scripts/drawing.js') }}"></script>
 </body>
