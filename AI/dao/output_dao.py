@@ -15,6 +15,22 @@ class OutputDAO:
         return output
 
     @staticmethod
+    def get_processed_letters_output(raw_output, answer):
+        """
+        Russian car numbers letters output.
+        :param raw_output: Neural network output.
+        :param answer: Neural network prediction.
+        :return: Dictionary of letters and neural network output as values, neural network prediction.
+        """
+        letters = ["А", "Б", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"]
+        digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        answer_dict = dict(zip(digits, letters))  # Match letters with indexes.
+        answer = answer_dict[answer]
+        raw_output = raw_output[0]
+        output = dict(zip(letters, raw_output))
+        return output, answer
+
+    @staticmethod
     def get_processed_symbols_output(raw_output, answer):
         """
         Russian car numbers symbols output.
@@ -24,7 +40,7 @@ class OutputDAO:
         """
         letters = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, "А", "Б", "Е", "К", "М", "Н", "О", "Р", "С", "Т", "У", "Х"]
         digits = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
-        answer_dict = dict(zip(digits, letters))  # Match letters with indexes.
+        answer_dict = dict(zip(digits, letters))  # Match symbols with indexes.
         answer = answer_dict[answer]
         raw_output = raw_output[0]
         output = dict(zip(letters, raw_output))

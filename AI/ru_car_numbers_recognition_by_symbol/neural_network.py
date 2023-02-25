@@ -14,7 +14,7 @@ class DigitsLettersNeuralNetwork:
         """
         self.size = 28, 28
         self.batch_size = 5
-        self.epochs = 5
+        self.epochs = 4
         training_data_dir = "datasets/training"
         testing_data_dir = "datasets/testing"
 
@@ -42,7 +42,7 @@ class DigitsLettersNeuralNetwork:
             Conv2D(64, (3, 3), padding='same', activation='relu'),
             MaxPooling2D((2, 2), strides=2),
             Flatten(),
-            Dense(128, activation='relu'),
+            Dense(200, activation='relu'),
             Dense(self.train_generator.num_classes, activation='softmax')
         ])
 

@@ -25,7 +25,12 @@ def recognize_user_input(network_name, pixels):
         x = np.expand_dims(pixels, axis=0)
         raw_res = model.predict(x)
         answer = np.argmax(raw_res)
-        res, answer = OutputDAO().get_processed_symbols_output(raw_res, answer)
+        if network_name == "digit_recognition":
+            res = OutputDAO().get_processed_digit_output(raw_res)
+        elif network_name == "ru_car_letters_recognition":
+            res, answer = OutputDAO().get_processed_letters_output(raw_res, answer)
+        else:
+            res, answer = OutputDAO().get_processed_symbols_output(raw_res, answer)
         return res, answer
 
 

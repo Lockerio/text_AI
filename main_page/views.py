@@ -27,7 +27,7 @@ def return_results_page():
         pixels = images_worker.change_black_to_white(raw_pixels)
 
     img = images_worker.convert_image_to_base(raw_img)
-    result, answer = recognize_user_input("ru_car_numbers_recognition_by_symbol", pixels)
+    result, answer = recognize_user_input("digit_recognition", pixels)
     return render_template('results.html', img=img, result=result, answer=answer)
 
 
@@ -35,17 +35,23 @@ def return_results_page():
 def return_car_results_page():
     files = request.files.getlist('files[]')
     images_worker = WorkerWithImages()
+    digit_indexes = [1, 2, 3, 6, 7]
     results = []
     answers = []
 
-    for file in files:
+    for file, i in zip(files, range(len(files))):
         pixels = images_worker.convert_28_28_image_to_pixels_array(file)
         pixels = images_worker.change_black_to_white(pixels)
         # img = images_worker.convert_image_to_base(file)
-        result, answer = recognize_user_input("ru_car_numbers_recognition_by_symbol", pixels)
+        if i in digit_indexes:
+            result, answer = recognize_user_input("digit_recognition", pixels)
+        else:
+            result, answer = recognize_user_input("ru_car_letters_recognition", pixels)
+        print(i)
         results.append(result)
-        answers.append(answer)
+        answers.append(str(answer).lower())
 
+    answers = ''.join(answers)
     return render_template('car_results.html', results=results, answers=answers)
 
 

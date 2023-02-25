@@ -13,15 +13,17 @@
                 <form id="draw_form" action="/results" method="post" enctype="multipart/form-data">
                     <p>Нарисованное изображение:</p>
                     <input id="drawn_img" type="text" name="picture" style="display: none;">
-                    <input id="clear_btn" type="button"  value="Очистить"></inputid>
+                    <input id="clear_btn" type="button" value="Очистить"></inputid>
                     <input id="drawn_img_submit" type="submit" value="Отправить">
-                </div>
+                </form>
             </ol>
             <ol>
                 <div id="own_file">
                     <form action="/results" method="post" enctype="multipart/form-data">
                         <p>Загрузите свое изображение:</p>
-                        <input id="loaded_img" type="file" name="picture">
+                        <div>
+                            <input id="loaded_img" type="file" name="picture">
+                        </div>
                         <input id="loaded_img_submit" type="submit" value="Отправить">
                     </form>
                 </div>
