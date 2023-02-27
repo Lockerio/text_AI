@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     font-family: 'Exo 2', sans-serif;
+    font-size: 1.03em;
 }
 
 :root {
@@ -23,19 +24,21 @@
 }
 
 #forms {
-    margin: 15px;   
     float: left;
 }
 
 #draw_form {
+    margin: 15px;
     float: none;
 }
 
 #own_file {
+    margin: 15px;
     float: none;
 }
 
 #own_files {
+    margin: 15px;
     float: none;
 }
 

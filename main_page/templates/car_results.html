@@ -3,17 +3,27 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/car_results.css') }}">
 </head>
 <body>
-    <main id="main">
-        <!-- <img src="{{ img }}" alt="User image"> -->
-        <ul>
-            {% for result in results %}
-                <li><p>{{ result }}</p></li>
-            {% endfor %}
-        </ul>
-        <p>Ваш ответ: {{ answers }}</p>
-    </main>
+    <!-- <img src="{{ img }}" alt="User image"> -->
+    <div id="results">
+        {% for result, answer in results %}
+            <div class="result">
+                {% for symbol, symbol_similarity in result.items() %}
+                    <p>{{ symbol }}: {{ symbol_similarity }}</p>
+                {% endfor %}
+                <p class="pre_answer">Ответ: {{ answer }}</p>
+            </div>
+        {% endfor %}
+    </div>
+    <div id="final">
+        <p id="answer">Ваш ответ: {{ answers }}</p>
+        <div class="btn">
+            <a class="link" href="/">
+                <div>На главную</div>
+            </a>
+        </div>
+    </div>
 </body>
 </html>

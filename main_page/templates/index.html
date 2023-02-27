@@ -31,11 +31,12 @@
             <ol>
                 <div id="own_files">
                     <form action="/car_results" method="post" enctype="multipart/form-data">
-                        <p>Загрузите несколько изображений (символы автомобильного номера):</p>
+                        <p>Загрузите 8 изображений (символы автомобильного номера):</p>
                         <dl>
                             <input id="loaded_imgs" type="file" name="files[]" multiple="true" autocomplete="off" required>
                         </dl>
                         <input id="loaded_imgs_submit" type="submit" value="Отправить">
+                        <p>{{ error }}</p>
                     </form>
                 </div>
             </ol>

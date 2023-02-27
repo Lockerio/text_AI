@@ -6,14 +6,21 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/results.css') }}">
 </head>
 <body>
-    <main id="main">
+    <div id="img">
         <img src="{{ img }}" alt="User image">
+        <div class="btn">
+            <a class="link" href="/">
+                <div>На главную</div>
+            </a>
+        </div>
+    </div>
+    <div id="results">
         <ul>
             {% for digit in result.keys() %}
-                <li><p>{{ digit }}: {{ result[digit] }}</p></li>
+                <li class="symbol_similarity"><p>{{ digit }}: {{ result[digit] }}</p></li>
             {% endfor %}
         </ul>
-        <p>Ваш ответ: {{ answer }}</p>
-    </main>
+        <p id="answer">Ответ: {{ answer }}</p>
+    </div>
 </body>
 </html>

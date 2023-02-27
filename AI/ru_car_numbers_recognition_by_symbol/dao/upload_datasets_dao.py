@@ -53,4 +53,6 @@ class UploadDatasetsDAO:
 
 if __name__ == '__main__':
     UploadDatasetsDAO().upload_cyrillic("../data/cyrillic/")
+
+    # Use 'testing', because of lots of images in 'training'.
     UploadDatasetsDAO().upload_digits("../data/digits/MNISTDatasetJPGformat/MNISTJPGtesting/")

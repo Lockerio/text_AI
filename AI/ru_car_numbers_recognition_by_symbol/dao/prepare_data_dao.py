@@ -28,11 +28,11 @@ class PrepareDataDAO:
         :param filepath: Directory with images.
         """
         img = Image.open(filepath)
-        fill_color = (255, 255, 255)  # your new background color
-        img = img.convert("RGBA")  # it had mode P after DL it from OP
+        fill_color = (255, 255, 255)
+        img = img.convert("RGBA")
         if img.mode in ('RGBA', 'LA'):
             background = Image.new(img.mode[:-1], img.size, fill_color)
-            background.paste(img, img.split()[-1])  # omit transparency
+            background.paste(img, img.split()[-1])
             img = background
 
         img.convert("RGB").save(filepath)
