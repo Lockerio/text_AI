@@ -21,7 +21,7 @@ network will be used). \
 So, if you fail the sequence, you will get wrong results.
 
 PS: There are 3 networks in project. So, "ru_car_numbers_recognition_by_symbol" is a
-failed experiment, so ignore her. 
+failed experiment, so ignore it. 
 
 ---
 
